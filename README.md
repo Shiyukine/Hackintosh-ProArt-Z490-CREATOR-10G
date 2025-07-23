@@ -17,7 +17,7 @@ Using macOS Sequoia, OpenCore 1.0.4
 - Storage: Crucial P3 Plus 4.0 NVMe PCIe M.2, Crucial MX300 SATA SSD, Crucial Mx100 512GB 2.5" SSD, Crucial Bx200 960GB 2.5" SSD
 
 ## Working
-- [x] **Audio**: Duet 2 by Apogee
+- [x] **Audio**: Duet 2 by Apogee with/without driver
 - [x] **USB**: some ports USB 2.0 and USB 3.0, not USB C port
     - You need to remap
     - Remap using https://github.com/USBToolBox/tool
@@ -68,6 +68,9 @@ Using macOS Sequoia, OpenCore 1.0.4
         ```
     - Copy `EFI` folder to the macOS disk EFI partition (using macOS):
 
+## Other drivers
+Available in `./Resources/Drivers`:
+- `duet-2.5c.zip`: for Duet 2 by Apogee
 
 ## Credits
 - OpenCore: https://github.com/acidanthera/OpenCorePkg
