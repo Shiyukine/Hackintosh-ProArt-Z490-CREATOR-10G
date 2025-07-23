@@ -14,6 +14,7 @@ Using macOS Sequoia
 - GPU: Intel Graphics UHD 630 & RTX 2070 & GTX 1060 6GB
 - Audio: Duet 2 by Apogee
 - Ethernet: Hyper 10G LAN
+- Storage: Crucial P3 Plus 4.0 NVMe PCIe M.2, Crucial MX300 SATA SSD, Crucial Mx100 512GB 2.5" SSD, Crucial Bx200 960GB 2.5" SSD
 
 ## Working
 - [x] **Audio**: Duet 2 by Apogee
@@ -46,6 +47,27 @@ Using macOS Sequoia
     - Use Windows to get Apple ROM
     - In `SystemProductName`: modify `iMac20,1` by `iMac20,2`
 - Working with HDMI only
+
+## Dual boot with different disks
+- If you already have EFI partition:
+    - Mount the macOS disk EFI partition
+    - Copy `EFI` folder to the macOS disk EFI partition 
+- If you don't have EFI partition without wiping (using macOS __installer__):
+    - Type `diskutil list` to find the macOS disk number
+    - Resize the APFS partition to create a new partition for EFI:
+        ```bash
+        diskutil apfs resizeContainer diskXsY 274.6GB
+        ```
+    - Force unmount the disk:
+        ```bash
+        diskutil unmountDisk force /dev/diskX
+        ```
+    - Create a new partition for EFI:
+        ```bash
+        gpt add -i [new partition number] -b $(gpt show diskX | grep free | awk '{print $1}') -s $(echo "200*1024*1024/512" | bc) -t C12A7328-F81F-11D2-BA4B-00A0C93EC93B /dev/diskX
+        ```
+    - Copy `EFI` folder to the macOS disk EFI partition (using macOS):
+
 
 ## Credits
 - OpenCore: https://github.com/acidanthera/OpenCorePkg
