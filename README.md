@@ -5,8 +5,8 @@ Using macOS Sequoia
 ![alt text](Resources/image.png)
 
 ## Hardware
-- Intel i9-10850k
-- Asus Proart Z490 Creator 10G 
+- CPU: Intel i9-10850k
+- Motherboard: Asus Proart Z490 Creator 10G 
 	- 2.5Gbit Ethernet: Intel I225-V
 	- Audio: Realtek S1220A 8-Channel
     - Thunderbolt 3
