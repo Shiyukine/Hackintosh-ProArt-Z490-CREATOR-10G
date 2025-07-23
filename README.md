@@ -1,12 +1,12 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Sequoia
+Using macOS Sequoia, OpenCore 1.0.4
 
 ![alt text](Resources/image.png)
 
 ## Hardware
 - CPU: Intel i9-10850k
-- Motherboard: Asus Proart Z490 Creator 10G 
+- Motherboard: ASUS ProArt Z490-CREATOR 10G
 	- 2.5Gbit Ethernet: Intel I225-V
 	- Audio: Realtek S1220A 8-Channel
     - Thunderbolt 3
