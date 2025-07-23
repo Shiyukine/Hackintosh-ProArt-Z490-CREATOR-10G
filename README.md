@@ -1,6 +1,6 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Sequoia, OpenCore 1.0.4
+Using macOS Sequoia 15.5, OpenCore 1.0.4
 
 ![alt text](Resources/image.png)
 
@@ -15,6 +15,7 @@ Using macOS Sequoia, OpenCore 1.0.4
 - Audio: Duet 2 by Apogee
 - Ethernet: Hyper 10G LAN
 - Storage: Crucial P3 Plus 4.0 NVMe PCIe M.2, Crucial MX300 SATA SSD, Crucial Mx100 512GB 2.5" SSD, Crucial Bx200 960GB 2.5" SSD
+- Bluetooth: TP-Link UB400
 
 ## Working
 - [x] **Audio**: Duet 2 by Apogee with/without driver
@@ -24,6 +25,7 @@ Using macOS Sequoia, OpenCore 1.0.4
 - [x] **2.5Gbit Ethernet (Intel I225-V)**: Hyper 10G LAN not working
 - [x] **Sleep/Wake**: using iGPU only
 - [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
+- [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
 
 ## Not working/not tested
 - [ ] Realtek S1220A 8-Channel
@@ -47,6 +49,8 @@ Using macOS Sequoia, OpenCore 1.0.4
     - Use Windows to get Apple ROM
     - In `SystemProductName`: modify `iMac20,1` by `iMac20,2`
 - Working with HDMI only
+- `IntelBluetoothFirmware.kext` is modified to work with some USB dongle ([see this](https://www.reddit.com/r/hackintosh/comments/16w2elb/how_to_make_generic_usb_bluetooth_50_csr_dongle/)):
+    - You need to get your Vendor ID and Product ID of your Bluetooth dongle if it is not 0x0A12 and 0x0001 respectively and modify `IntelBluetoothFirmware.kext/Contents/Info.plist`
 
 ## Dual boot with different disks
 - If you already have EFI partition:
@@ -72,6 +76,10 @@ Using macOS Sequoia, OpenCore 1.0.4
 Available in `./Resources/Drivers`:
 - `duet-2.5c.zip`: for Duet 2 by Apogee
 
-## Credits
+## Sources
+- OpenCore Install Guide: https://dortania.github.io/OpenCore-Install-Guide
 - OpenCore: https://github.com/acidanthera/OpenCorePkg
 - Existing configuration Z490 (fix iGPU): https://github.com/xiaovie/Hackintosh-ROG-Z490-series-motherboard-OpenCore
+- Bluetooth dongle fix: https://www.reddit.com/r/hackintosh/comments/16w2elb/how_to_make_generic_usb_bluetooth_50_csr_dongle/
+- Fix for bootloop in installer: https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/
+- USB remap: https://github.com/USBToolBox/tool
