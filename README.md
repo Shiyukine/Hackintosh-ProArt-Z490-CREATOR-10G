@@ -2,20 +2,23 @@
 
 Using macOS Sequoia
 
+![alt text](Resources/image.png)
+
 ## Hardware
 - Intel i9-10850k
 - Asus Proart Z490 Creator 10G 
 	- 2.5Gbit Ethernet: Intel I225-V
 	- Audio: Realtek S1220A 8-Channel
     - Thunderbolt 3
-- RAM: 32GB 2400Mhz
+- RAM: 32GB 2400Mhz DDR4
 - GPU: Intel Graphics UHD 630 & RTX 2070 & GTX 1060 6GB
 - Audio: Duet 2 by Apogee
 - Ethernet: Hyper 10G LAN
 
 ## Working
 - [x] **Audio**: Duet 2 by Apogee
-- [x] **USB**: some ports USB 2.0 and USB 3.0
+- [x] **USB**: some ports USB 2.0 and USB 3.0, not USB C port
+    - You need to remap
     - Remap using https://github.com/USBToolBox/tool
 - [x] **2.5Gbit Ethernet (Intel I225-V)**: Hyper 10G LAN not working
 - [x] **Sleep/Wake**: using iGPU only
