@@ -22,8 +22,7 @@ Using macOS Sequoia
     - Remap using https://github.com/USBToolBox/tool
 - [x] **2.5Gbit Ethernet (Intel I225-V)**: Hyper 10G LAN not working
 - [x] **Sleep/Wake**: using iGPU only
-- [x] **Shutdown (F1 problem)**
-- [x] **Restart (F1 problem)**
+- [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
 
 ## Not working/not tested
 - [ ] Realtek S1220A 8-Channel
