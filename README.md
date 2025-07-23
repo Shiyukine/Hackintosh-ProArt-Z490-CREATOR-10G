@@ -45,6 +45,7 @@ Using macOS Sequoia
 - You need to generate your [platform info](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo):
     - Use Windows to get Apple ROM
     - In `SystemProductName`: modify `iMac20,1` by `iMac20,2`
+- Working with HDMI only
 
 ## Credits
 - OpenCore: https://github.com/acidanthera/OpenCorePkg
