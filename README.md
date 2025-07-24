@@ -30,7 +30,6 @@ Using macOS Sequoia 15.5, OpenCore 1.0.4
 - [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
 
 ## Not working/not tested
-- [ ] Realtek S1220A 8-Channel
 - [ ] RTX 2070
 - [ ] GTX 1060 6GB
 - [ ] Thunderbolt 3
