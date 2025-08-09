@@ -55,6 +55,13 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
     - You need to get your Vendor ID and Product ID of your Bluetooth dongle if it is not 0x0A12 and 0x0001 respectively and modify `IntelBluetoothFirmware.kext/Contents/Info.plist`
 - `VT-d` must be enabled in BIOS, otherwise 10Gbit Ethernet (Aquantia AQtion AQC107) will not work 
 - If you have a crash (kernel panic) a few seconds or minutes after booting, modify `Primary Display` to `CPU Graphics`
+- If you have `Failed to prepare the software update` error:
+    - Verify that `SecureBootModel` is set to `Disabled`
+    - Reset NVRAM
+    - Use Terminal:
+        ```bash
+        sudo softwareupdate -i -a -R
+        ```
 
 ## Dual boot with different disks
 - If you already have EFI partition:
