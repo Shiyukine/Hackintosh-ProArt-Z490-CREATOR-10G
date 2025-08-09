@@ -22,7 +22,7 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
     - Duet 2 by Apogee with/without driver
     - Realtek S1220A 8-Channel
 - [x] **USB**: mapped some ports USB 2.0 and USB 3.0, not USB C port
-    - You need to remap
+    - You will need to remap
     - Remap using https://github.com/USBToolBox/tool
 - [x] **Ethernet**: 
     - 2.5Gbit Ethernet (Intel I225-V)
@@ -30,11 +30,13 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
 - [x] **Sleep/Wake**: using iGPU only
 - [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
 - [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
+- [x] **Updates**: From Sequoia 15.5 to Sequoia 15.6
+- [x] **Apple Secure Boot**: ApECID is generated
 
 ## Not working/not tested
 - [ ] RTX 2070
 - [ ] GTX 1060 6GB
-- [ ] Thunderbolt 3
+- [ ] Thunderbolt
 - [ ] DRM
 
 ## Warning
