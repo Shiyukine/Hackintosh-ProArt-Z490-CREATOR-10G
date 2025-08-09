@@ -1,6 +1,6 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Sequoia 15.5, OpenCore 1.0.4
+Using macOS Sequoia 15.6, OpenCore 1.0.4
 
 ![alt text](Resources/image.png)
 
@@ -46,7 +46,7 @@ Using macOS Sequoia 15.5, OpenCore 1.0.4
         - `EFI/BOOT/BOOTx64.efi`
         - `EFI/OC/Drivers/OpenRuntime.efi`
         - `EFI/OC/OpenCore.efi`
-- You need to disable `SecureBootModel` to complete installation to avoid bootloop ([see this](https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/))
+- You need to set `SecureBootModel` to `Disabled` to update or to complete installation to avoid bootloop ([see this](https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/))
 - You need to generate your [platform info](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo):
     - Use Windows to get Apple ROM
     - In `SystemProductName`: modify `iMac20,1` by `iMac20,2`
