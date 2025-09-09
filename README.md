@@ -1,6 +1,6 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Sequoia 15.6, OpenCore 1.0.4
+Using macOS Sequoia 15.6.1, OpenCore 1.0.4
 
 ![alt text](Resources/image.png)
 
@@ -22,7 +22,7 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
     - Duet 2 by Apogee with/without driver
     - Realtek S1220A 8-Channel
 - [x] **USB**: mapped some ports USB 2.0 and USB 3.0, not USB C port
-    - You will need to remap
+    - You will need to remap your USB ports
     - Remap using https://github.com/USBToolBox/tool
 - [x] **Ethernet**: 
     - 2.5Gbit Ethernet (Intel I225-V)
@@ -30,8 +30,10 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
 - [x] **Sleep/Wake**: using iGPU only
 - [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
 - [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
-- [x] **Updates**: From Sequoia 15.5 to Sequoia 15.6
-- [x] **Apple Secure Boot**: ApECID is generated
+- [x] **Updates**: From Sequoia 15.5 to Sequoia 15.6.1
+- [x] **Apple Secure Boot**: 
+    - ApECID is generated
+    - `nvram 94b73556-2197-4702-82a8-3e1337dafbfb:AppleSecureBootPolicy` returns `%02`
 
 ## Not working/not tested
 - [ ] RTX 2070
@@ -48,7 +50,7 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
         - `EFI/BOOT/BOOTx64.efi`
         - `EFI/OC/Drivers/OpenRuntime.efi`
         - `EFI/OC/OpenCore.efi`
-- You need to set `SecureBootModel` to `Disabled` to update or to complete installation to avoid bootloop ([see this](https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/))
+- You need to set `SecureBootModel` to `Disabled` to complete the installation to avoid bootloop ([see this](https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/))
 - You need to generate your [platform info](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo):
     - Use Windows to get Apple ROM
     - In `SystemProductName`: modify `iMac20,1` by `iMac20,2`
@@ -60,18 +62,20 @@ Using macOS Sequoia 15.6, OpenCore 1.0.4
 - If you have `Failed to prepare the software update` error:
     - Verify that `SecureBootModel` is set to `Disabled`
     - Reset NVRAM
+    - Try again twice
     - Use Terminal:
         ```bash
         sudo softwareupdate -i -a -R
         ```
-- If macOS crash instantly, it may be related to the ApECID:
+    - Don't forget to change `SecureBootModel` back to `j185f` after the update and reset NVRAM again. You may need to personalize your macOS installation in **macOS Recovery** (see below)
+- If you boot into macOS Recovery automatically, it may be related to the ApECID:
     - You need to generate your own ApECID ([see this](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid))
     - Personalize your macOS installation in **macOS Recovery**:
-    ```bash
-    # You'll also need an active network connection in recovery to run this command
-    # Replace "Macintosh HD" with your macOS disk name
-    bless --folder "/Volumes/Macintosh HD/System/Library/CoreServices" --bootefi --personalize
-    ```
+        ```bash
+        # You'll also need an active network connection in recovery to run this command
+        # Replace "Macintosh HD" with your macOS disk name
+        bless --folder "/Volumes/Macintosh HD/System/Library/CoreServices" --bootefi --personalize
+        ```
 
 ## Dual boot with different disks
 - If you already have EFI partition:
@@ -104,3 +108,4 @@ Available in `./Resources/Drivers`:
 - Bluetooth dongle fix: https://www.reddit.com/r/hackintosh/comments/16w2elb/how_to_make_generic_usb_bluetooth_50_csr_dongle/
 - Fix for bootloop in installer: https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/
 - USB remap: https://github.com/USBToolBox/tool
+- Check Apple Secure Boot: https://github.com/perez987/Apple-Secure-Boot-and-Vault-with-OpenCore
