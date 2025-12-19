@@ -1,6 +1,6 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Sequoia 26.2, OpenCore 1.0.6
+Using macOS Tahoe 26.2, OpenCore 1.0.6
 
 ![alt text](Resources/image.png)
 
