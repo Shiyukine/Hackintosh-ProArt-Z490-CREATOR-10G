@@ -1,6 +1,6 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Sequoia 15.6.1, OpenCore 1.0.4
+Using macOS Sequoia 26.2, OpenCore 1.0.6
 
 ![alt text](Resources/image.png)
 
@@ -20,7 +20,6 @@ Using macOS Sequoia 15.6.1, OpenCore 1.0.4
 ## Working
 - [x] **Audio**: 
     - Duet 2 by Apogee with/without driver
-    - Realtek S1220A 8-Channel
 - [x] **USB**: mapped some ports USB 2.0 and USB 3.0, not USB C port
     - You will need to remap your USB ports
     - Remap using https://github.com/USBToolBox/tool
@@ -30,7 +29,7 @@ Using macOS Sequoia 15.6.1, OpenCore 1.0.4
 - [x] **Sleep/Wake**: using iGPU only
 - [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
 - [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
-- [x] **Updates**: From Sequoia 15.5 to Sequoia 15.6.1
+- [x] **Updates**: From Sequoia 15.5 to Tahoe 26.2
 - [x] **Apple Secure Boot**: 
     - ApECID is generated
     - `nvram 94b73556-2197-4702-82a8-3e1337dafbfb:AppleSecureBootPolicy` returns `%02`
@@ -38,8 +37,10 @@ Using macOS Sequoia 15.6.1, OpenCore 1.0.4
 ## Not working/not tested
 - [ ] RTX 2070
 - [ ] GTX 1060 6GB
-- [ ] Thunderbolt
+- [ ] Thunderbolt (not tested)
 - [ ] DRM
+- [ ] Realtek S1220A 8-Channel (you need to manually install [VoodooHDA](#no-sound-with-macos-tahoe-260-and-later))
+- [ ] iMessage (not tested)
 
 ## Warning
 - Using RELEASE opencore build:
@@ -51,31 +52,53 @@ Using macOS Sequoia 15.6.1, OpenCore 1.0.4
         - `EFI/OC/Drivers/OpenRuntime.efi`
         - `EFI/OC/OpenCore.efi`
 - You need to set `SecureBootModel` to `Disabled` to complete the installation to avoid bootloop ([see this](https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/))
+- Monitor is working with HDMI only
 - You need to generate your [platform info](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html#platforminfo):
     - Use Windows to get Apple ROM
     - In `SystemProductName`: modify `iMac20,1` by `iMac20,2`
-- Working with HDMI only
 - `IntelBluetoothFirmware.kext` is modified to work with some USB dongle ([see this](https://www.reddit.com/r/hackintosh/comments/16w2elb/how_to_make_generic_usb_bluetooth_50_csr_dongle/)):
     - You need to get your Vendor ID and Product ID of your Bluetooth dongle if it is not 0x0A12 and 0x0001 respectively and modify `IntelBluetoothFirmware.kext/Contents/Info.plist`
 - `VT-d` must be enabled in BIOS, otherwise 10Gbit Ethernet (Aquantia AQtion AQC107) will not work 
 - If you have a crash (kernel panic) a few seconds or minutes after booting, modify `Primary Display` to `CPU Graphics` in BIOS settings
-- If you have `Failed to prepare the software update` error:
-    - Verify that `SecureBootModel` is set to `Disabled`
-    - Reset NVRAM
-    - Try again twice
-    - Use Terminal:
-        ```bash
-        sudo softwareupdate -i -a -R
-        ```
-    - Don't forget to change `SecureBootModel` back to `j185f` after the update and reset NVRAM again. You may need to personalize your macOS installation in **macOS Recovery** (see below)
-- If you boot into macOS Recovery automatically, it may be related to the ApECID:
-    - You need to generate your own ApECID ([see this](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid))
-    - Personalize your macOS installation in **macOS Recovery**:
-        ```bash
-        # You'll also need an active network connection in recovery to run this command
-        # Replace "Macintosh HD" with your macOS disk name
-        bless --folder "/Volumes/Macintosh HD/System/Library/CoreServices" --bootefi --personalize
-        ```
+- Since macOS Tahoe, Apple has changed the audio driver requirements. You may need to manually install [VoodooHDA](#no-sound-with-macos-tahoe-260-and-later) to get audio working
+
+## Installation problems
+
+### Booting into macOS Recovery automatically
+- You need to generate your own ApECID ([see this](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid))
+- Personalize your macOS installation in **macOS Recovery**:
+    ```bash
+    # You'll also need an active network connection in recovery to run this command
+    # Replace "Macintosh HD" with your macOS disk name
+    bless --folder "/Volumes/Macintosh HD/System/Library/CoreServices" --bootefi --personalize
+    ```
+
+### Failed to prepare the software update
+If you have `Failed to prepare the software update` error:
+- Verify that `SecureBootModel` is set to `Disabled` (normally fixed with [iBridged](https://github.com/Carnations-Botanica/iBridged))
+- Reset NVRAM (normally fixed with [iBridged](https://github.com/Carnations-Botanica/iBridged))
+- Try again twice
+- Use Terminal:
+    ```bash
+    sudo softwareupdate -i -a -R
+    ```
+- Don't forget to change `SecureBootModel` back to `j185f` after the update and reset NVRAM again (normally fixed with [iBridged](https://github.com/Carnations-Botanica/iBridged))
+- You may need to personalize your macOS installation in macOS Recovery (see [Booting into macOS Recovery automatically section](#booting-into-macos-recovery-automatically))
+
+### No sound with macOS Tahoe 26.0 and later
+- Reset NVRAM
+- Reboot
+- Download [VoodooHDA.kext](https://github.com/CloverHackyColor/VoodooHDA/releases/download/Release303/VoodooHDA.kext-303.zip)
+- Download [VoodooHDA.prefPane](https://github.com/CloverHackyColor/VoodooHDA/releases/download/Release302/VoodooHDA.prefPane.zip)
+- Unzip both files
+- Use terminal to install VoodooHDA:
+    ```bash
+    sudo cp -R /path_to/VoodooHDA.kext /Library/Extensions/
+    sudo cp -R /path_to/VoodooHDA.prefPane /Library/PreferencePanes/
+    ```
+- Wait while the system saids that the kext must be approved
+- Go to System Settings and approve the kext.
+- Reboot
 
 ## Dual boot with different disks
 - If you already have EFI partition:
