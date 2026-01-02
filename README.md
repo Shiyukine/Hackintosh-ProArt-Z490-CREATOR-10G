@@ -20,6 +20,7 @@ Using macOS Tahoe 26.2, OpenCore 1.0.6
 ## Working
 - [x] **Audio**: 
     - Duet 2 by Apogee with/without driver
+    - Realtek S1220A 8-Channel (you need to manually install [VoodooHDA](#no-sound-with-macos-tahoe-260-and-later))
 - [x] **USB**: mapped some ports USB 2.0 and USB 3.0, not USB C port
     - You will need to remap your USB ports
     - Remap using https://github.com/USBToolBox/tool
@@ -39,7 +40,6 @@ Using macOS Tahoe 26.2, OpenCore 1.0.6
 - [ ] GTX 1060 6GB
 - [ ] Thunderbolt (not tested)
 - [ ] DRM
-- [ ] Realtek S1220A 8-Channel (you need to manually install [VoodooHDA](#no-sound-with-macos-tahoe-260-and-later))
 - [ ] iMessage (not tested)
 
 ## Warning
@@ -123,6 +123,7 @@ If you have `Failed to prepare the software update` error:
 ## Other drivers
 Available in `./Resources/Drivers`:
 - `duet-2.5c.zip`: for Duet 2 by Apogee
+- `Apogee Control 2 Native_1_21_41.dmg`: Apogee Control 2 driver by Apogee, compatible with macOS Tahoe
 
 ## Sources
 - OpenCore Install Guide: https://dortania.github.io/OpenCore-Install-Guide
@@ -132,3 +133,4 @@ Available in `./Resources/Drivers`:
 - Fix for bootloop in installer: https://www.reddit.com/r/hackintosh/comments/1cdvijs/opencore_bootloader_menu_keeps_bootlooping_to/
 - USB remap: https://github.com/USBToolBox/tool
 - Check Apple Secure Boot: https://github.com/perez987/Apple-Secure-Boot-and-Vault-with-OpenCore
+- VoodooHDA: https://github.com/CloverHackyColor/VoodooHDA
