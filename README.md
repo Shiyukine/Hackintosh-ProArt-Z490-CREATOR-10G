@@ -1,6 +1,6 @@
 # OpenCore Asus Proart Z490 Creator 10G 
 
-Using macOS Tahoe 26.3, OpenCore 1.0.6
+Using macOS Tahoe 26.4, OpenCore 1.0.6
 
 ![Screenshot](Resources/image.png)
 
@@ -35,7 +35,7 @@ Using macOS Tahoe 26.3, OpenCore 1.0.6
 - [x] **Sleep/Wake**: using iGPU only
 - [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
 - [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
-- [x] **Updates**: From Sequoia 15.5 to Tahoe 26.3
+- [x] **Updates**: From Sequoia 15.5 to Tahoe 26.4
 - [x] **Apple Secure Boot**: 
     - ApECID is generated
     - `nvram 94b73556-2197-4702-82a8-3e1337dafbfb:AppleSecureBootPolicy` returns `%02`
