@@ -1,6 +1,9 @@
-# OpenCore Asus Proart Z490 Creator 10G 
+# Hackintosh Asus Proart Z490 Creator 10G 
 
-Using macOS Tahoe 26.4, OpenCore 1.0.6
+> [!WARNING]  
+> Because I've now my personal Macbook and I've wiped my Hackintosh, I'll not maintain this repository anymore, but I will keep it here for reference.
+
+Using macOS Tahoe 26.4.1 and OpenCore 1.0.7
 
 ![Screenshot](Resources/image.png)
 
@@ -35,7 +38,7 @@ Using macOS Tahoe 26.4, OpenCore 1.0.6
 - [x] **Sleep/Wake**: using iGPU only
 - [x] **Shutdown/Restart**: fixed BIOS reset or sent into Safemode after reboot/shutdown
 - [x] **Bluetooth**: USB Bluetooth dongle TP-Link UB400
-- [x] **Updates**: From Sequoia 15.5 to Tahoe 26.4
+- [x] **Updates**: From Sequoia 15.5 to Tahoe 26.4.1
 - [x] **Apple Secure Boot**: 
     - ApECID is generated
     - `nvram 94b73556-2197-4702-82a8-3e1337dafbfb:AppleSecureBootPolicy` returns `%02`
@@ -47,10 +50,10 @@ Using macOS Tahoe 26.4, OpenCore 1.0.6
 - [ ] iMessage (not tested)
 
 ## Warning
-- I'm using RELEASE opencore build, thus:
+- I'm using a RELEASE opencore build, thus:
     - Verbose is disabled
     - `TargetMisc -> Debug -> Target` is `3`
-- To use DEBUG build:
+- To use a DEBUG build:
     - Replace the following files with the [DEBUG version](https://github.com/acidanthera/OpenCorePkg/releases):
         - `EFI/BOOT/BOOTx64.efi`
         - `EFI/OC/Drivers/OpenRuntime.efi`
@@ -64,7 +67,7 @@ Using macOS Tahoe 26.4, OpenCore 1.0.6
 - `VT-d` must be enabled in BIOS, otherwise 10Gbit Ethernet (Aquantia AQtion AQC107) will not work 
 - If you have a crash (kernel panic) a few seconds or minutes after booting, modify `Primary Display` to `CPU Graphics` in BIOS settings
 - Since macOS Tahoe, Apple has changed the audio driver requirements. You may need to manually install [VoodooHDA](#no-sound-with-macos-tahoe-260-and-later) to get audio working
-- For Apogee users, since macOS 26.0, you must use the following driver: `./Resources/Drivers/Apogee Control 2 Native_1_21_41.dmg`. And since macOS 26.3, you must disconnect and reconnect the Duet 2 after booting.
+- For Apogee users, since macOS 26.0, if your Apogee device is not working, try first to disconnect and reconnect it. If it still doesn't work, try to switch the driver. You can find 2 different drivers in `./Resources/Drivers`.
 
 ## Installation problems
 
